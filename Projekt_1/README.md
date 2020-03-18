@@ -205,7 +205,6 @@ public:
   // return current game state:
   // - FINISHED_LOSS - if the player revealed field with mine
   // - FINISHED_WIN - if the player won the game:
-  // --- all mines were flagged and there are no flags on fields without mines, or
   // --- all unrevealed fields have mines 
   // - RUNNING - if the game is not yet finished 
   GameState getGameState() const;
