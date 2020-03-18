@@ -240,3 +240,24 @@ public:
 [...][...][...][...][...][M..][...][...][...]
 [M..][...][...][...][...][...][M..][...][...]
 ```
+
+*******************************************************************
+Saper - etap 3 (rozwinięcie etapu 1 oraz 2)
+*******************************************************************
+
+Dodaj do programu klasę **MSBoardTextView**, która będzie potrafiła wyświetlić planszę w trybie teksotwym w postaci takiej, jaką powinien zobaczyć gracz (czyli nie tak jak to robi `debug_display()` ).
+
+Obiekt tej klasy powinien dostać referencję na planszę jako argument wywołania konstruktora, tak aby możliwe było napisanie programu:
+
+```C++
+int main() 
+{ 
+  MinesweeperBoard board (20, 10, GameMode::EASY); 
+  MSBoardTextView view ( board ); 
+  view.display(); 
+  board.revealField(0,5);
+  view.display(); 
+} 
+```
+
+Wydzielenie funkcjonalności wyświetlania planszy do osobnej klasy może Wam się w tej chwili wydawać dziwne i nienaturalne, ale w przyszłości nam się to przyda. Dzięki temu, że rozdzielimy kwestię logiki (MinesweeperBoard) od sposobu jej prezentacji (MSBoardTextView), będziemy mogli bez modyfikacji użyć klasy MinesweeperBoard w aplikacji "graficznej".
