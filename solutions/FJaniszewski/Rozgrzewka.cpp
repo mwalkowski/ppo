@@ -10,17 +10,17 @@
 struct Student{std::string imie; std::string nazwisko; std::string plec; std::string nr_pesel; std::string numer_indeksu;}student;
 struct BazaStudentow{Student student[100]; unsigned int count=0;}Baza;
 
-void Display_student(const Student& student);
-void Display_all_students(const Student x[], int n);
+void Display_student(Student& student);
+void Display_all_students(Student x[], int n);
 int Find_student(BazaStudentow &Baza, std::string poszukiwany_numer_indeksu);
 void add_student(BazaStudentow &Baza);
 void remove_student(BazaStudentow &Baza, std::string poszukiwany_numer_indeksu);
-void Display(const BazaStudentow& Baza);
+void Display(BazaStudentow& Baza);
 void Save_students(BazaStudentow& Baza);
 void load_students(BazaStudentow& Baza);
+std::fstream BazaDanych;
 
 int main() {
-    std::fstream BazaDanych;
     std::cout<<"     "<<" Wybierz opcje: \n _______________________\n [1] -Dodaj studenta \n [2] -Znajdz studenta \n [3] -Usun studenta \n "
                         "[4] -Zapisz \n [5] -Wczytaj\n [6] -Wyswietl cala baze \n [k] -Wyjscie z programu"<<std::endl;
     char opcja;
@@ -153,7 +153,6 @@ void remove_student(BazaStudentow &Baza, std::string poszukiwany_numer_indeksu){
 }
 
 void Save_students(BazaStudentow& Baza){
-    std::fstream BazaDanych;
     BazaDanych.open("BazaStudentow.txt", std::ios::out);
     for(int i=0;i<Baza.count;i++){
         BazaDanych<<Baza.student[i].imie<<std::endl;
@@ -167,7 +166,6 @@ void Save_students(BazaStudentow& Baza){
 }
 
 void load_students(BazaStudentow& Baza) {
-    std::fstream BazaDanych;
     std::string linia;
     int ilosc_linii=0;
     std::ifstream BazaDanych("BazaStudentow.txt");
