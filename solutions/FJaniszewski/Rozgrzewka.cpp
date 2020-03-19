@@ -13,16 +13,16 @@ struct BazaStudentow{Student students[100]; unisnged int count=0}Baza;
 
 std::fstream BazaDanych;
 void Display_student(const Student& student);
-void Display_all_students(const Student x[], int n);
 int Find_student(BazaStudentow &Baza, std::string poszukiwany_numer_indeksu);
-int add_student(BazaStudentow &Baza);
+void add_student(BazaStudentow &Baza);
 void remove_student(BazaStudentow &Baza, std::string poszukiwany_numer_indeksu);
 void Display(const BazaStudentow& Baza);
 void Save_students(BazaStudentow& Baza);
 void load_students(BazaStudentow& Baza);
 
 int main() {
-    std::cout<<"     "<<" Wybierz opcje: \n _______________________\n [1] -Dodaj studenta \n [2] -Znajdz studenta \n [3] -Usun studenta \n [4] -Zapisz \n [5] -Wczytaj\n [6] -Wyswietl cala baze \n [k] -Wyjscie z programu"<<std::endl;
+    std::cout<<"     "<<" Wybierz opcje: \n _______________________\n [1] -Dodaj studenta \n [2] -Znajdz studenta \n [3] -Usun studenta \n "
+                        "[4] -Zapisz \n [5] -Wczytaj\n [6] -Wyswietl cala baze \n [k] -Wyjscie z programu"<<std::endl;
     char opcja;
     while(opcja!='k') {
         std::cin >> opcja;
@@ -93,16 +93,6 @@ void Display_student(Student& Filip){
     std::cout<<"Nr indeksu: "<<Filip.numer_indeksu<<std::endl;
 }
 
-void Display_all_students(Student x[], int n){
-    for(int i=0;i<n;i++){
-        std::cout<<"Imie: "<<x[i].imie<<std::endl;
-        std::cout<<"Nazwisko: "<<x[i].nazwisko<<std::endl;
-        std::cout<<"Plec: "<<x[i].plec<<std::endl;
-        std::cout<<"Nr pesel: "<<x[i].nr_pesel<<std::endl;
-        std::cout<<"Nr indeksu: "<<x[i].numer_indeksu<<std::endl;
-    }
-}
-
 void Display(BazaStudentow& Baza){                              //pokazuje cala baze z etapu 2
     for(int i=0;i<Baza.liczba;i++){
         std::cout<<"Imie: "<<Baza.imie[i]<<std::endl;
@@ -125,7 +115,7 @@ int Find_student(BazaStudentow &Baza, std::string poszukiwany_numer_indeksu){
     return polozenie;
 }
 
-int add_student(BazaStudentow& Baza){
+void add_student(BazaStudentow& Baza){
     std::cout<<"Imie: "<<std::endl;
     std::cin>>Baza.imie[Baza.liczba];
     std::cout<<"Nazwisko: "<<std::endl;
