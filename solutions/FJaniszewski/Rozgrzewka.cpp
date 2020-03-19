@@ -8,11 +8,11 @@
 
 
 
-struct Student{std::string imie; std::string nazwisko; std::string plec; std::string nr_pesel; std::string numer_indeksu;};
-struct BazaStudentow{Student students[100]; unisnged int count=0}Baza;
+struct Student{std::string imie; std::string nazwisko; std::string plec; std::string nr_pesel; std::string numer_indeksu;}student;
+struct BazaStudentow{Student student[100]; unsigned int count=0;}Baza;
 
-std::fstream BazaDanych;
 void Display_student(const Student& student);
+void Display_all_students(const Student x[], int n);
 int Find_student(BazaStudentow &Baza, std::string poszukiwany_numer_indeksu);
 void add_student(BazaStudentow &Baza);
 void remove_student(BazaStudentow &Baza, std::string poszukiwany_numer_indeksu);
@@ -21,6 +21,7 @@ void Save_students(BazaStudentow& Baza);
 void load_students(BazaStudentow& Baza);
 
 int main() {
+    std::fstream BazaDanych;
     std::cout<<"     "<<" Wybierz opcje: \n _______________________\n [1] -Dodaj studenta \n [2] -Znajdz studenta \n [3] -Usun studenta \n "
                         "[4] -Zapisz \n [5] -Wczytaj\n [6] -Wyswietl cala baze \n [k] -Wyjscie z programu"<<std::endl;
     char opcja;
@@ -64,25 +65,24 @@ int main() {
                 break;
             }
         }
-    }
-    /*Student Filip;                                            //etap pierwszy
+    }                                       //etap pierwszy
     int n=3;
     Student x[n]={
     {"Jan", "Kaluzny", "M", "00234568543", "253011"},
     {"Edyta", "Marzec", "K", "97324328756", "252015"},
     {"Eustachy", "Nowak", "M", "00261708543", "253024"}};
     std::cout<<"Imie: "<<std::endl;
-    std::cin>>Filip.imie;
+    std::cin>>student.imie;
     std::cout<<"Nazwisko: "<<std::endl;
-    std::cin>>Filip.nazwisko;
+    std::cin>>student.nazwisko;
     std::cout<<"Plec: "<<std::endl;
-    std::cin>>Filip.plec;
+    std::cin>>student.plec;
     std::cout<<"Nr pesel: "<<std::endl;
-    std::cin>>Filip.nr_pesel;
+    std::cin>>student.nr_pesel;
     std::cout<<"Nr indeksu: "<<std::endl;
-    std::cin>>Filip.numer_indeksu;
-    Display_student(Filip);
-    Display_all_students(x,n);*/
+    std::cin>>student.numer_indeksu;
+    Display_student(student);
+    Display_all_students(x,n);
 }
 
 void Display_student(Student& Filip){
@@ -94,20 +94,29 @@ void Display_student(Student& Filip){
 }
 
 void Display(BazaStudentow& Baza){                              //pokazuje cala baze z etapu 2
-    for(int i=0;i<Baza.liczba;i++){
-        std::cout<<"Imie: "<<Baza.imie[i]<<std::endl;
-        std::cout<<"Nazwisko: "<<Baza.nazwisko[i]<<std::endl;
-        std::cout<<"Plec: "<<Baza.plec[i]<<std::endl;
-        std::cout<<"Nr pesel: "<<Baza.nr_pesel[i]<<std::endl;
-        std::cout<<"Nr indeksu: "<<Baza.numer_indeksu[i]<<std::endl;
+    for(int i=0;i<Baza.count;i++){
+        std::cout<<"Imie: "<<Baza.student[i].imie<<std::endl;
+        std::cout<<"Nazwisko: "<<Baza.student[i].nazwisko<<std::endl;
+        std::cout<<"Plec: "<<Baza.student[i].plec<<std::endl;
+        std::cout<<"Nr pesel: "<<Baza.student[i].nr_pesel<<std::endl;
+        std::cout<<"Nr indeksu: "<<Baza.student[i].numer_indeksu<<std::endl;
     }
 }
 
-int Find_student(BazaStudentow &Baza, std::string poszukiwany_numer_indeksu){
-    int polozenie;
-    for(int i=0;i<Baza.liczba;i++){
-        if(Baza.numer_indeksu[i].compare(poszukiwany_numer_indeksu)==0){
-            polozenie=i;                            //za polozenie uznaje numer indeksu w tablicy
+void Display_all_students(Student x[], int n){
+    for(int i=0;i<n;i++){
+        std::cout<<"Imie: "<<x[i].imie<<std::endl;
+        std::cout<<"Nazwisko: "<<x[i].nazwisko<<std::endl;
+        std::cout<<"Plec: "<<x[i].plec<<std::endl;
+        std::cout<<"Nr pesel: "<<x[i].nr_pesel<<std::endl;
+        std::cout<<"Nr indeksu: "<<x[i].numer_indeksu<<std::endl;
+    }
+}
+
+int Find_student(BazaStudentow &Baza, const std::string poszukiwany_numer_indeksu){
+    int polozenie = 0;
+    for(int i=0;i<Baza.count;i++){
+        if(Baza.student[i].numer_indeksu.compare(poszukiwany_numer_indeksu)==0){
             break;
         }
         else polozenie=-1;
@@ -117,65 +126,67 @@ int Find_student(BazaStudentow &Baza, std::string poszukiwany_numer_indeksu){
 
 void add_student(BazaStudentow& Baza){
     std::cout<<"Imie: "<<std::endl;
-    std::cin>>Baza.imie[Baza.liczba];
+    std::cin>>Baza.student[Baza.count].imie;
     std::cout<<"Nazwisko: "<<std::endl;
-    std::cin>>Baza.nazwisko[Baza.liczba];
+    std::cin>>Baza.student[Baza.count].nazwisko;
     std::cout<<"Plec: "<<std::endl;
-    std::cin>>Baza.plec[Baza.liczba];
+    std::cin>>Baza.student[Baza.count].plec;
     std::cout<<"Nr pesel: "<<std::endl;
-    std::cin>>Baza.nr_pesel[Baza.liczba];
+    std::cin>>Baza.student[Baza.count].nr_pesel;
     std::cout<<"Nr indeksu: "<<std::endl;
-    std::cin>>Baza.numer_indeksu[Baza.liczba];
-    Baza.liczba++;
+    std::cin>>Baza.student[Baza.count].numer_indeksu;
+    Baza.count++;
 }
 
 void remove_student(BazaStudentow &Baza, std::string poszukiwany_numer_indeksu){
     int to_delete;
     to_delete=Find_student(Baza, poszukiwany_numer_indeksu);
     std::cout<<to_delete;
-    for (int i = to_delete; i<= Baza.liczba;i++) {
-        Baza.imie[i] = Baza.imie[i+1];
-        Baza.nazwisko[i] = Baza.nazwisko[i+1];
-        Baza.plec[i] = Baza.plec[i+1];
-        Baza.nr_pesel[i] = Baza.nr_pesel[i+1];
-        Baza.numer_indeksu[i] = Baza.numer_indeksu[i+1];
+    for (int i = to_delete; i<= Baza.count;i++) {
+        Baza.student[i].imie = Baza.student[i+1].imie;
+        Baza.student[i].nazwisko = Baza.student[i+1].nazwisko;
+        Baza.student[i].plec = Baza.student[i+1].plec;
+        Baza.student[i].nr_pesel = Baza.student[i+1].nr_pesel;
+        Baza.student[i].numer_indeksu = Baza.student[i+1].numer_indeksu;
     }
-    Baza.liczba-=1;
+    Baza.count-=1;
     if(to_delete!=-1)std::cout<<"Pomyslnie usunieto studenta z bazy danych!"<<std::endl;
 }
 
 void Save_students(BazaStudentow& Baza){
+    std::fstream BazaDanych;
     BazaDanych.open("BazaStudentow.txt", std::ios::out);
-    for(int i=0;i<Baza.liczba;i++){
-        BazaDanych<<Baza.imie[i]<<std::endl;
-        BazaDanych<<Baza.nazwisko[i]<<std::endl;
-        BazaDanych<<Baza.plec[i]<<std::endl;
-        BazaDanych<<Baza.nr_pesel[i]<<std::endl;
-        BazaDanych<<Baza.numer_indeksu[i]<<std::endl;
-        BazaDanych<<Baza.liczba<<std::endl;
+    for(int i=0;i<Baza.count;i++){
+        BazaDanych<<Baza.student[i].imie<<std::endl;
+        BazaDanych<<Baza.student[i].nazwisko<<std::endl;
+        BazaDanych<<Baza.student[i].plec<<std::endl;
+        BazaDanych<<Baza.student[i].nr_pesel<<std::endl;
+        BazaDanych<<Baza.student[i].numer_indeksu<<std::endl;
+        BazaDanych<<Baza.count<<std::endl;
     }
     BazaDanych.close();
 }
 
 void load_students(BazaStudentow& Baza) {
+    std::fstream BazaDanych;
     std::string linia;
-    int ilosc_linii;
+    int ilosc_linii=0;
     std::ifstream BazaDanych("BazaStudentow.txt");
     while(std::getline(BazaDanych,linia)) ilosc_linii++;
-    Baza.liczba=ilosc_linii/6;
+    Baza.count=ilosc_linii/6;
     BazaDanych.close();
     BazaDanych.open("BazaStudentow.txt", std::ios::in);
     while (getline(BazaDanych, linia)) {
-        for (int i = 0; i < Baza.liczba; i++) {
-            Baza.imie[i]=linia;
+        for (int i = 0; i < Baza.count; i++) {
+            Baza.student[i].imie=linia;
             BazaDanych>>linia;
-            Baza.nazwisko[i]=linia;
+            Baza.student[i].nazwisko=linia;
             BazaDanych>>linia;
-            Baza.plec[i]=linia;
+            Baza.student[i].plec=linia;
             BazaDanych>>linia;
-            Baza.nr_pesel[i]=linia;
+            Baza.student[i].nr_pesel=linia;
             BazaDanych>>linia;
-            Baza.numer_indeksu[i]=linia;
+            Baza.student[i].numer_indeksu=linia;
             BazaDanych>>linia;
             BazaDanych>>linia;
         }
