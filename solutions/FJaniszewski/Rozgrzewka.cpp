@@ -65,7 +65,7 @@ int main() {
             }
         }
     }                                       //etap pierwszy
-    int n=3;
+    const int n=3;
     Student x[n]={
     {"Jan", "Kaluzny", "M", "00234568543", "253011"},
     {"Edyta", "Marzec", "K", "97324328756", "252015"},
