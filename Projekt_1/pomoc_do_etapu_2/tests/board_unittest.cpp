@@ -87,18 +87,18 @@ TEST(MinesweeperBoardTest, countMinesIfEitherXOrYIsOutsideBoard) {
 // - countMines(7,6) should return 1
 TEST(MinesweeperBoardTest, countMinesIfFieldIsRelealed) {
     MinesweeperBoard uut(WIDTH, HEIGHT, DEBUG);
+    
+    uut.revealField(0, 1);
+    EXPECT_EQ(4, uut.countMines(0, 1));
 
-    uut.revealField(1, 0);
-    EXPECT_EQ(4, uut.countMines(1, 0));
+    uut.revealField(9, 2);
+    EXPECT_EQ(0, uut.countMines(9, 2));
 
-    uut.revealField(2, 8);
-    EXPECT_EQ(0, uut.countMines(2, 8));
+    uut.revealField(1, 2);
+    EXPECT_EQ(3, uut.countMines(1, 2));
 
-    uut.revealField(2, 1);
-    EXPECT_EQ(3, uut.countMines(2, 1));
-
-    uut.revealField(6, 7);
-    EXPECT_EQ(1, uut.countMines(6, 7));
+    uut.revealField(7, 6);
+    EXPECT_EQ(1, uut.countMines(7, 6));
 }
 
 }
