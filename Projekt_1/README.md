@@ -260,3 +260,45 @@ int main()
 ```
 
 Wydzielenie funkcjonalności wyświetlania planszy do osobnej klasy może Wam się w tej chwili wydawać dziwne i nienaturalne, ale w przyszłości nam się to przyda. Dzięki temu, że rozdzielimy kwestię logiki (MinesweeperBoard) od sposobu jej prezentacji (MSBoardTextView), będziemy mogli bez modyfikacji użyć klasy MinesweeperBoard w aplikacji "graficznej".
+
+*******************************************************************
+Saper - etap 4 (rozwinięcie etapu 1, 2 oraz 3)
+*******************************************************************
+#### Informacja organizacyjna
+Skoro już wszyscy mieliśmy okazje zobaczyć jakie robimy podstawowe błędy oraz jakie były komentarze do kodu przechodzimy do prawdziwej pracy.
+
+Projekt saper (etap 1,2,3 i 4) oraz każdy kolejny projekt, oddajemy w następujący sposób:
+- tworzymy prywatne repozytorium na github,
+- dodajemy mnie jako collaborator (w swoim prywatnym repozytorium klikamy w `Settings` -> `Manage access` -> `Invite a collaborator`)
+
+Osoby, które korzystają z https://zts.ita.pwr.wroc.pl/gitlab/users/sign_in - stosują się do instrukcji, która znajduje się na forum wykładu.
+
+Termin:
+- 2 kwietnia, wszystkie 4 etapy – kiedy projekt będzie Państwa zdaniem gotowy do oddania, proszę o maila.
+
+Dodatkowo dla osób, które chcą wyższą ocenę to do 9 kwietnia należy rozbudować projekt „saper” o graficzny interfejs z wykorzystaniem biblioteki SFML.
+
+W związku z tym, że przeszliśmy tylko na model konsultacji, oprócz kontaktu mailowego jestem dostępny również na: https://eagle.ita.pwr.wroc.pl/.
+
+Dla tych co mają jeszcze problemy z gitem: https://rogerdudler.github.io/git-guide/index.pl.html
+
+
+#### Treść zadania
+Rozbuduj aplikację do kompletnej, działającej w trybie tekstowym gry.
+
+Dodaj do projektu kolejną klasę - MSTextController. Konstruktor tej klasy powinien otrzymać planszę oraz "widok". Klasa ma jedną funkcję - play() - w tej funkcji implementujemy "komunikację" z graczem (człowiekiem).
+
+W tej klasie MOŻNA używać cin ;)
+
+```C++
+int main() 
+{ 
+  MinesweeperBoard board (20, 10, GameMode::EASY); 
+  MSBoardTextView view ( board ); 
+  MSTextController ctrl ( board, view );
+ 
+  ctrl.play();
+}
+```
+
+
