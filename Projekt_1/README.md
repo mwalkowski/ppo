@@ -274,9 +274,9 @@ Projekt saper (etap 1,2,3 i 4) oraz każdy kolejny projekt, oddajemy w następuj
 Osoby, które korzystają z https://zts.ita.pwr.wroc.pl/gitlab/users/sign_in - stosują się do instrukcji, która znajduje się na forum wykładu.
 
 Termin:
-- 2 kwietnia, wszystkie 4 etapy – kiedy projekt będzie Państwa zdaniem gotowy do oddania, proszę o maila.
+- **2 kwietnia, wszystkie 4 etapy** – kiedy projekt będzie Państwa zdaniem gotowy do oddania, proszę o maila.
 
-Dodatkowo dla osób, które chcą wyższą ocenę to do 9 kwietnia należy rozbudować projekt „saper” o graficzny interfejs z wykorzystaniem biblioteki SFML.
+Dodatkowo dla osób, które chcą wyższą ocenę to do **9 kwietnia** należy rozbudować projekt „saper” o graficzny interfejs z wykorzystaniem biblioteki SFML.
 
 W związku z tym, że przeszliśmy tylko na model konsultacji, oprócz kontaktu mailowego jestem dostępny również na: https://eagle.ita.pwr.wroc.pl/.
 
