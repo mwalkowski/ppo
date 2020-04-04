@@ -15,4 +15,4 @@ Projekt oddajemy w następujący sposób:
 * tworzymy prywatne repozytorium na github,
 * dodajemy mnie jako collaborator (w swoim prywatnym repozytorium klikamy w `Settings` -> `Manage access` -> `Invite a collaborator`)
 
-Osoby, które korzystają z https://zts.ita.pwr.wroc.pl/gitlab/users/sign_in - stosują się do instrukcji, która znajduje się na forum wykładu.
+Osoby, które korzystają z https://zts.ita.pwr.wroc.pl/ - stosują się do instrukcji, która znajduje się na forum wykładu.
